@@ -1,6 +1,6 @@
 #!/bin/bash
 main() {
-  declare -a languages=("bash" "c" "c++" "haskell" "java" "javascript" "python" "swift")
+  declare -a languages=("bash" "c" "c++" "go" "haskell" "java" "javascript" "python" "swift")
   for language in ${languages[@]}; do
     run_language_in_3_seconds "$language"
   done
@@ -22,6 +22,9 @@ run_language() {
       ;;
     "c++")
       run_cpp
+      ;;
+    go)
+      run_go
       ;;
     haskell)
       run_haskell
@@ -55,6 +58,11 @@ run_cpp() {
   g++ hello_world.cpp -o cpp_hello_world_temp
   ./cpp_hello_world_temp
   rm cpp_hello_world_temp
+}
+
+run_go() {
+  go run hello-world.go
+  rm hello-world
 }
 
 run_haskell() {
